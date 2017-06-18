@@ -15,8 +15,10 @@ namespace calculator
             string input = args.Length > 1 ? args[1]: "0" ;           
             int result = 0;
 
-            string[] separators = new string[] { "\\n", "," };
-            numbers = Array.ConvertAll(input.Split(separators,StringSplitOptions.RemoveEmptyEntries), int.Parse).ToList();
+            //string[] separators = new string[] { "\\n", "," };
+            string separator = input.Substring(input.IndexOf(@"\\") + 1, input.LastIndexOf(@"\\"));
+            char c = separator[1];
+            numbers = Array.ConvertAll(input.Substring(input.LastIndexOf("\\")+1).Split(c), int.Parse).ToList();
             
             if (methodName.ToLower().Equals("add") || methodName.ToLower().Equals("sum"))
             {
