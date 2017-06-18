@@ -31,7 +31,7 @@ namespace calculator
             }
             else
             {
-                Console.WriteLine("Negative numbers not allowed");
+                Console.WriteLine("Negative numbers(" + string.Join(",",numbers.Where(i => i < 0).Select(i => i).ToArray()) + ") not allowed");
             }
 
             Console.ReadKey();
