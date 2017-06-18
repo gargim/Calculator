@@ -19,12 +19,21 @@ namespace calculator
             string separator = input.Substring(input.IndexOf(@"\\") + 1, input.LastIndexOf(@"\\"));
             char c = separator[1];
             numbers = Array.ConvertAll(input.Substring(input.LastIndexOf("\\")+1).Split(c), int.Parse).ToList();
-            
-            if (methodName.ToLower().Equals("add") || methodName.ToLower().Equals("sum"))
+            bool containsNegative = numbers.Any(i => i < 0);
+
+            if (!containsNegative)
             {
-                result = add(numbers);
+                if (methodName.ToLower().Equals("add") || methodName.ToLower().Equals("sum"))
+                {
+                    result = add(numbers);
+                }
+                Console.WriteLine(result);
             }
-            Console.WriteLine(result);
+            else
+            {
+                Console.WriteLine("Negative numbers not allowed");
+            }
+
             Console.ReadKey();
         }
 
