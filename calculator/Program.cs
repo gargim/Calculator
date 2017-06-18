@@ -14,8 +14,9 @@ namespace calculator
             string methodName = args[0];
             string input = args.Length > 1 ? args[1]: "0" ;           
             int result = 0;
-            
-            numbers = Array.ConvertAll(input.Split(','), int.Parse).ToList();
+
+            string[] separators = new string[] { "\\n", "," };
+            numbers = Array.ConvertAll(input.Split(separators,StringSplitOptions.RemoveEmptyEntries), int.Parse).ToList();
             
             if (methodName.ToLower().Equals("add") || methodName.ToLower().Equals("sum"))
             {
