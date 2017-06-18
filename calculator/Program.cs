@@ -27,6 +27,10 @@ namespace calculator
                 {
                     result = add(numbers);
                 }
+                else if (methodName.ToLower().Equals("multiply"))
+                {
+                    result = multiply(numbers);
+                }
                 Console.WriteLine(result);
             }
             else
@@ -49,6 +53,20 @@ namespace calculator
             }
 
             return sum;
+        }
+
+        static int multiply(List<int> numbers)
+        {
+            int product = 1;
+            foreach (int number in numbers)
+            {
+                if (number <= 1000)
+                {
+                    product *= number;
+                }
+            }
+
+            return product;
         }
     }
 }
